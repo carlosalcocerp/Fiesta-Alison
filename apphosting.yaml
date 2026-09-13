@@ -8,4 +8,20 @@ runConfig:
   cpu: 1
   memoryMiB: 512
 
-env: []
+env:
+  - variable: VITE_FIREBASE_API_KEY
+    value: AIzaSyAYgllJETqSB5syap984t89JAjlfQ6NIKw
+  - variable: VITE_FIREBASE_AUTH_DOMAIN
+    value: fiesta-alison.firebaseapp.com
+  - variable: VITE_FIREBASE_DATABASE_URL
+    value: https://fiesta-alison-default-rtdb.firebaseio.com
+  - variable: VITE_FIREBASE_PROJECT_ID
+    value: fiesta-alison
+  - variable: VITE_FIREBASE_STORAGE_BUCKET
+    value: fiesta-alison.firebasestorage.app
+  - variable: VITE_FIREBASE_MESSAGING_SENDER_ID
+    value: "712269167819"
+  - variable: VITE_FIREBASE_APP_ID
+    value: "1:712269167819:web:51d17a6d4282664fde6f4e"
+  - variable: VITE_FIREBASE_MEASUREMENT_ID
+    value: G-81CRKBTSVZ
