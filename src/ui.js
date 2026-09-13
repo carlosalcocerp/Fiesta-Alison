@@ -212,9 +212,10 @@ export function startCountdown(targetDate) {
 }
 
 // ─── Rock Music Controller (Audio File Player) ───
-// Place your music file at: src/assets/music.mp3
+import musicUrl from './assets/music.mp3?url';
+
 export function createRockMusic() {
-  const audio = new Audio('/src/assets/music.mp3');
+  const audio = new Audio(musicUrl);
   audio.loop = true;
   audio.volume = 0.5;
   let isPlaying = false;
