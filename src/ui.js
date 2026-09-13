@@ -218,15 +218,19 @@ export function createRockMusic() {
   const audio = new Audio(musicUrl);
   audio.loop = true;
   audio.volume = 0.5;
+  audio.preload = 'auto';
   let isPlaying = false;
 
-  function start() {
-    audio.play().then(() => {
+  async function start() {
+    try {
+      await audio.play();
       isPlaying = true;
-    }).catch(() => {
-      // Browser blocked autoplay, user needs to click
+      return true;
+    } catch {
+      // Browser autoplay policy requires user gesture
       isPlaying = false;
-    });
+      return false;
+    }
   }
 
   function stop() {
@@ -234,17 +238,13 @@ export function createRockMusic() {
     isPlaying = false;
   }
 
-  function toggle() {
+  async function toggle() {
     if (isPlaying) {
       stop();
+      return false;
     } else {
-      audio.play().then(() => {
-        isPlaying = true;
-      }).catch(() => {
-        isPlaying = false;
-      });
+      return await start();
     }
-    return isPlaying;
   }
 
   function setVolume(vol) {

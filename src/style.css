@@ -613,11 +613,25 @@ body {
   position: relative;
 }
 
+.form-limit-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(147, 51, 234, 0.2);
+  border: 1px solid rgba(147, 51, 234, 0.4);
+  border-radius: 20px;
+  color: var(--accent-purple-light);
+  margin-left: 0.5rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
 .file-input-label {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 0.4rem;
   padding: 2rem;
   border: 2px dashed rgba(147, 51, 234, 0.3);
   border-radius: var(--radius-md);
@@ -626,6 +640,7 @@ body {
   transition: all var(--transition-normal);
   color: var(--text-secondary);
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .file-input-label:hover {
@@ -636,6 +651,12 @@ body {
 
 .file-input-label .file-icon {
   font-size: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+.file-limit-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }
 
 .file-input-hidden {

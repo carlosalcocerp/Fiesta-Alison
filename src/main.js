@@ -10,7 +10,9 @@ import {
   listenToVerified,
   MESSAGES_COL,
   PHOTOS_COL,
-  VIDEOS_COL
+  VIDEOS_COL,
+  MAX_PHOTO_SIZE_MB,
+  MAX_VIDEO_SIZE_MB
 } from './messages.js';
 
 import {
@@ -29,42 +31,53 @@ import './style.css';
 
 // ─── DOM Ready ───
 document.addEventListener('DOMContentLoaded', () => {
-  // ─── Initialize Rock Music ───
+  // ─── Initialize Rock Music (Activated by default) ───
   const music = createRockMusic();
   const musicBtn = document.getElementById('music-toggle');
   const musicIcon = document.getElementById('music-icon');
+  let musicEnabled = true; // Default: ON
 
-  // Try to autoplay on first user interaction
-  let musicStarted = false;
-  function tryStartMusic() {
-    if (!musicStarted) {
-      music.start();
-      musicStarted = true;
-      if (musicBtn) musicBtn.classList.add('playing');
-      if (musicIcon) musicIcon.textContent = '🎵';
-      document.removeEventListener('click', tryStartMusic);
-      document.removeEventListener('touchstart', tryStartMusic);
-      document.removeEventListener('scroll', tryStartMusic);
-    }
+  function updateMusicUI(playing) {
+    if (musicBtn) musicBtn.classList.toggle('playing', playing);
+    if (musicIcon) musicIcon.textContent = playing ? '🎵' : '🔇';
   }
 
-  // Auto-start music on first interaction (browser policy)
-  document.addEventListener('click', tryStartMusic);
-  document.addEventListener('touchstart', tryStartMusic);
-  document.addEventListener('scroll', tryStartMusic);
+  // Attempt autoplay immediately
+  music.start().then((playing) => {
+    if (playing) {
+      updateMusicUI(true);
+    }
+  });
 
+  // Browser Autoplay Fallback: Start immediately upon first user gesture anywhere
+  const userGestureEvents = ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll'];
+  function onFirstUserGesture() {
+    if (musicEnabled && !music.isPlaying) {
+      music.start().then((playing) => {
+        if (playing) updateMusicUI(true);
+      });
+    }
+    userGestureEvents.forEach((evt) => {
+      window.removeEventListener(evt, onFirstUserGesture, { capture: true });
+    });
+  }
+
+  userGestureEvents.forEach((evt) => {
+    window.addEventListener(evt, onFirstUserGesture, { capture: true, passive: true });
+  });
+
+  // Music toggle button interaction
   if (musicBtn) {
-    musicBtn.addEventListener('click', (e) => {
+    musicBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
-      if (!musicStarted) {
-        music.start();
-        musicStarted = true;
-        musicBtn.classList.add('playing');
-        if (musicIcon) musicIcon.textContent = '🎵';
+      if (music.isPlaying) {
+        music.stop();
+        musicEnabled = false;
+        updateMusicUI(false);
       } else {
-        const playing = music.toggle();
-        musicBtn.classList.toggle('playing', playing);
-        if (musicIcon) musicIcon.textContent = playing ? '🎵' : '🔇';
+        musicEnabled = true;
+        const playing = await music.start();
+        updateMusicUI(playing);
       }
     });
   }
@@ -111,26 +124,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ─── Photo Preview ───
+  // ─── Photo Preview & Size Validation ───
   const photoInput = document.getElementById('photo-file');
   const photoPreview = document.getElementById('photo-preview');
   if (photoInput) {
     photoInput.addEventListener('change', () => {
       const file = photoInput.files[0];
-      if (file && photoPreview) {
+      if (!file) {
+        if (photoPreview) {
+          photoPreview.innerHTML = '';
+          photoPreview.classList.remove('has-preview');
+        }
+        return;
+      }
+
+      // Check max photo size (10 MB)
+      if (file.size > MAX_PHOTO_SIZE_MB * 1024 * 1024) {
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+        showBanner('error', `⚠️ La foto pesa ${sizeMB} MB y supera el límite de ${MAX_PHOTO_SIZE_MB} MB. Por favor elige una más liviana.`);
+        photoInput.value = '';
+        if (photoPreview) {
+          photoPreview.innerHTML = '';
+          photoPreview.classList.remove('has-preview');
+        }
+        return;
+      }
+
+      if (photoPreview) {
         photoPreview.innerHTML = `<img src="${URL.createObjectURL(file)}" alt="Preview" />`;
         photoPreview.classList.add('has-preview');
       }
     });
   }
 
-  // ─── Video Preview ───
+  // ─── Video Preview & Size Validation ───
   const videoInput = document.getElementById('video-file');
   const videoPreview = document.getElementById('video-preview');
   if (videoInput) {
     videoInput.addEventListener('change', () => {
       const file = videoInput.files[0];
-      if (file && videoPreview) {
+      if (!file) {
+        if (videoPreview) {
+          videoPreview.innerHTML = '';
+          videoPreview.classList.remove('has-preview');
+        }
+        return;
+      }
+
+      // Check max video size (50 MB)
+      if (file.size > MAX_VIDEO_SIZE_MB * 1024 * 1024) {
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+        showBanner('error', `⚠️ El video pesa ${sizeMB} MB y supera el límite de ${MAX_VIDEO_SIZE_MB} MB. Por favor elige un video más corto o comprimido.`);
+        videoInput.value = '';
+        if (videoPreview) {
+          videoPreview.innerHTML = '';
+          videoPreview.classList.remove('has-preview');
+        }
+        return;
+      }
+
+      if (videoPreview) {
         videoPreview.innerHTML = `<video src="${URL.createObjectURL(file)}" controls></video>`;
         videoPreview.classList.add('has-preview');
       }
@@ -172,6 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const file = document.getElementById('photo-file').files[0];
       if (!name || !file) return;
 
+      if (file.size > MAX_PHOTO_SIZE_MB * 1024 * 1024) {
+        showBanner('error', `⚠️ La foto supera el límite de ${MAX_PHOTO_SIZE_MB} MB.`);
+        return;
+      }
+
       const submitBtn = photoForm.querySelector('button[type="submit"]');
       const progressBar = document.getElementById('photo-progress');
       const progressFill = document.getElementById('photo-progress-fill');
@@ -194,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showBanner('success', '📷 ¡Foto subida! ¡Genial!');
       } catch (err) {
         console.error(err);
-        showBanner('error', '❌ Error al subir la foto');
+        showBanner('error', err.message || '❌ Error al subir la foto');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = '📷 Subir Foto';
@@ -210,6 +268,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('video-name').value.trim();
       const file = document.getElementById('video-file').files[0];
       if (!name || !file) return;
+
+      if (file.size > MAX_VIDEO_SIZE_MB * 1024 * 1024) {
+        showBanner('error', `⚠️ El video supera el límite de ${MAX_VIDEO_SIZE_MB} MB.`);
+        return;
+      }
 
       const submitBtn = videoForm.querySelector('button[type="submit"]');
       const progressBar = document.getElementById('video-progress');
@@ -233,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showBanner('success', '🎥 ¡Video subido! ¡Increíble!');
       } catch (err) {
         console.error(err);
-        showBanner('error', '❌ Error al subir el video');
+        showBanner('error', err.message || '❌ Error al subir el video');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = '🎥 Subir Video';

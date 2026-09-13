@@ -138,11 +138,12 @@
             <input type="text" id="photo-name" class="form-input" placeholder="¿Cómo te llamas?" maxlength="80" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Selecciona una foto</label>
+            <label class="form-label">Selecciona una foto <span class="form-limit-badge">Máx. 10 MB</span></label>
             <div class="file-input-wrapper">
               <label class="file-input-label">
                 <span class="file-icon">📷</span>
                 <span>Haz clic o arrastra una imagen aquí</span>
+                <span class="file-limit-hint">(Formatos JPG, PNG, WEBP — Máx. 10 MB)</span>
                 <input type="file" id="photo-file" class="file-input-hidden" accept="image/*" required />
               </label>
             </div>
@@ -165,11 +166,12 @@
             <input type="text" id="video-name" class="form-input" placeholder="¿Cómo te llamas?" maxlength="80" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Selecciona un video</label>
+            <label class="form-label">Selecciona un video <span class="form-limit-badge">Máx. 50 MB</span></label>
             <div class="file-input-wrapper">
               <label class="file-input-label">
                 <span class="file-icon">🎥</span>
                 <span>Haz clic o arrastra un video aquí</span>
+                <span class="file-limit-hint">(Formatos MP4, WEBM, MOV — Máx. 50 MB)</span>
                 <input type="file" id="video-file" class="file-input-hidden" accept="video/*" required />
               </label>
             </div>
@@ -225,8 +227,8 @@
   <!-- ═══════════════════════════════════════════════
        MUSIC TOGGLE BUTTON (Fixed)
        ═══════════════════════════════════════════════ -->
-  <button class="music-toggle" id="music-toggle" aria-label="Toggle música">
-    <span id="music-icon">🔇</span>
+  <button class="music-toggle playing" id="music-toggle" aria-label="Toggle música" title="Música ambiental activada">
+    <span id="music-icon">🎵</span>
   </button>
 
   <!-- Main JS Module -->

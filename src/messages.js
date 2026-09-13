@@ -20,10 +20,13 @@ import {
   getDownloadURL
 } from 'firebase/storage';
 
-// ─── Collection Names ───
+// ─── Collection Names & Upload Limits ───
 const MESSAGES_COL = 'fiesta_messages';
 const PHOTOS_COL   = 'fiesta_photos';
 const VIDEOS_COL   = 'fiesta_videos';
+
+export const MAX_PHOTO_SIZE_MB = 10; // Límite de 10 MB para fotos
+export const MAX_VIDEO_SIZE_MB = 50; // Límite de 50 MB para videos
 
 // ─── Upload File to Firebase Storage ───
 // Returns a promise that resolves with the download URL
@@ -61,6 +64,10 @@ export async function submitMessage(name, message) {
 
 // ─── Submit Photo ───
 export async function submitPhoto(name, file, onProgress) {
+  if (file.size > MAX_PHOTO_SIZE_MB * 1024 * 1024) {
+    throw new Error(`La foto supera el tamaño máximo permitido de ${MAX_PHOTO_SIZE_MB}MB.`);
+  }
+
   // 1. Create Firestore document first
   const docRef = await addDoc(collection(db, PHOTOS_COL), {
     name,
@@ -80,6 +87,10 @@ export async function submitPhoto(name, file, onProgress) {
 
 // ─── Submit Video ───
 export async function submitVideo(name, file, onProgress) {
+  if (file.size > MAX_VIDEO_SIZE_MB * 1024 * 1024) {
+    throw new Error(`El video supera el tamaño máximo permitido de ${MAX_VIDEO_SIZE_MB}MB.`);
+  }
+
   // 1. Create Firestore document first
   const docRef = await addDoc(collection(db, VIDEOS_COL), {
     name,
