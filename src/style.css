@@ -1329,6 +1329,20 @@ body {
 }
 
 /* Footer stripe bar */
+.stripe-bar {
+  width: 100%;
+  height: 14px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--accent-red) 0px,
+    var(--accent-red) 10px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+}
+
 .footer-stripes {
   margin: 0 auto 1.5rem;
   width: 120px;
@@ -1382,13 +1396,12 @@ body {
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .hero {
-    padding: 1.5rem;
-    background-size: cover;
-    background-position: top center;
+    padding: 1.5rem 1rem;
   }
 
-  .hero-stripes {
-    width: 200px;
+  .hero-photo {
+    background-size: cover;
+    background-position: center 20%;
   }
 
   .hero-title {
