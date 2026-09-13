@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────
 // 🔥 Firebase Configuration & Initialization
-// Fiesta de Cumpleaños de Alison 🎸🎂
+// Fiesta de Cumpleaños de Alisson 🎸🎂
 // ─────────────────────────────────────────────────────────
 
 import { initializeApp } from "firebase/app";

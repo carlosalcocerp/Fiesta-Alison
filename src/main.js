@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────
 // 🎯 Main Orchestrator — Events, Listeners & Initialization
-// Fiesta de Cumpleaños de Alison 🎸🎂
+// Fiesta de Cumpleaños de Alisson 🎸🎂
 // ─────────────────────────────────────────────────────────
 
 import {

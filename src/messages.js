@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────
 // 📨 Messages / Photos / Videos — Firestore & Storage Logic
-// Fiesta de Cumpleaños de Alison 🎸🎂
+// Fiesta de Cumpleaños de Alisson 🎸🎂
 // ─────────────────────────────────────────────────────────
 
 import { db, storage } from './firebase.js';

@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────
 // 🎨 UI Components — DOM Generators, Lightbox & Particles
-// Fiesta de Cumpleaños de Alison 🎸🎂
+// Fiesta de Cumpleaños de Alisson 🎸🎂
 // ─────────────────────────────────────────────────────────
 
 // ─── Create Message Card ───
@@ -118,9 +118,9 @@ export function createVideoCard(data) {
 export function createEmptyState(type) {
   const emojis = { messages: '💌', photos: '📷', videos: '🎥' };
   const labels = {
-    messages: '¡Sé el primero en dejar un mensaje para Alison!',
-    photos: '¡Comparte una foto para Alison!',
-    videos: '¡Sube un video para Alison!'
+    messages: '¡Sé el primero en dejar un mensaje para Alisson!',
+    photos: '¡Comparte una foto para Alisson!',
+    videos: '¡Sube un video para Alisson!'
   };
 
   const div = document.createElement('div');

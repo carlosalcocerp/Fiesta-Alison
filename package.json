@@ -1,7 +1,7 @@
 {
   "name": "fiesta-alison",
   "version": "1.0.0",
-  "description": "Sitio web interactivo para la fiesta de cumpleaños de Alison 🎸🎂",
+  "description": "Sitio web interactivo para la fiesta de cumpleaños de Alisson 🎸🎂",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "start": "node server.js"
   },
-  "keywords": ["fiesta", "alison", "cumpleaños", "rock"],
+  "keywords": ["fiesta", "alisson", "cumpleaños", "rock"],
   "author": "",
   "license": "ISC",
   "dependencies": {
