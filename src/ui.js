@@ -152,7 +152,7 @@ export function closeLightbox() {
 }
 
 // ─── Floating Particles ───
-const ROCK_EMOJIS = ['🎸', '🤘', '⚡', '🎵', '🔥', '🎶', '💀', '🖤', '⭐', '🎤'];
+const ROCK_EMOJIS = ['🎸', '⚡', '🤘', '🔥', '❤️', '⭐', '🎤', '💋', '🎵', '🎶'];
 
 export function spawnParticle() {
   const particle = document.createElement('div');
@@ -160,8 +160,8 @@ export function spawnParticle() {
   particle.textContent = ROCK_EMOJIS[Math.floor(Math.random() * ROCK_EMOJIS.length)];
   particle.style.left = Math.random() * 100 + '%';
   particle.style.animationDuration = (6 + Math.random() * 8) + 's';
-  particle.style.opacity = 0.15 + Math.random() * 0.35;
-  particle.style.fontSize = (16 + Math.random() * 20) + 'px';
+  particle.style.opacity = 0.08 + Math.random() * 0.15;
+  particle.style.fontSize = (14 + Math.random() * 18) + 'px';
   document.body.appendChild(particle);
 
   particle.addEventListener('animationend', () => particle.remove());

@@ -22,8 +22,8 @@ import {
 
 // ─── Collection Names & Upload Limits ───
 const MESSAGES_COL = 'fiesta_messages';
-const PHOTOS_COL   = 'fiesta_photos';
-const VIDEOS_COL   = 'fiesta_videos';
+const PHOTOS_COL = 'fiesta_photos';
+const VIDEOS_COL = 'fiesta_videos';
 
 export const MAX_PHOTO_SIZE_MB = 10; // Límite de 10 MB para fotos
 export const MAX_VIDEO_SIZE_MB = 50; // Límite de 50 MB para videos
@@ -56,7 +56,7 @@ export async function submitMessage(name, message) {
   const docRef = await addDoc(collection(db, MESSAGES_COL), {
     name,
     message,
-    verified: true,
+    verified: false,
     timestamp: serverTimestamp()
   });
   return docRef.id;
@@ -72,7 +72,7 @@ export async function submitPhoto(name, file, onProgress) {
   const docRef = await addDoc(collection(db, PHOTOS_COL), {
     name,
     photoUrl: null,
-    verified: true,
+    verified: false,
     timestamp: serverTimestamp()
   });
 
@@ -95,7 +95,7 @@ export async function submitVideo(name, file, onProgress) {
   const docRef = await addDoc(collection(db, VIDEOS_COL), {
     name,
     videoUrl: null,
-    verified: true,
+    verified: false,
     timestamp: serverTimestamp()
   });
 
