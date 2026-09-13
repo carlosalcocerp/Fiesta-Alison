@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎸 Fiesta de Cumpleaños de Alison — 3 de Octubre 2026</title>
+  <meta name="description" content="¡Estás invitado a la fiesta de cumpleaños de Alison! 🎂🎸 3 de Octubre de 2026. Deja tu felicitación, sube fotos y videos." />
+  <meta name="theme-color" content="#9333ea" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+       ═══════════════════════════════════════════════ -->
+  <section class="hero" id="hero" style="background-image: url('./src/assets/alison.jpg');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <!-- Badge -->
+      <div class="hero-badge">
+        <span>🎂</span>
+        <span>CUMPLEAÑOS</span>
+        <span>🎸</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-title">¡Fiesta de Alison!</h1>
+      <p class="hero-subtitle">🤘 Rock & Birthday 🤘</p>
+      <p class="hero-date">
+        <strong>3 de Octubre de 2026</strong>
+      </p>
+
+      <!-- CTA -->
+      <button class="cta-button" id="cta-scroll">
+        <span>🎉</span>
+        <span>¡Únete a la Fiesta!</span>
+        <span>⚡</span>
+      </button>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" id="scroll-indicator">
+      <span>Desliza</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       COUNTDOWN SECTION
+       ═══════════════════════════════════════════════ -->
+  <section class="countdown-section" id="countdown-section">
+    <h2 class="section-title">⏰ Cuenta Regresiva</h2>
+    <p class="section-subtitle">¡Falta poco para la fiesta más rock del año!</p>
+
+    <div class="countdown-grid">
+      <div class="countdown-card">
+        <div class="countdown-number" id="countdown-days">--</div>
+        <div class="countdown-label">Días</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-number" id="countdown-hours">--</div>
+        <div class="countdown-label">Horas</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-number" id="countdown-mins">--</div>
+        <div class="countdown-label">Minutos</div>
+      </div>
+      <div class="countdown-card">
+        <div class="countdown-number" id="countdown-secs">--</div>
+        <div class="countdown-label">Segundos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       EVENT INFO SECTION
+       ═══════════════════════════════════════════════ -->
+  <section class="info-section" id="info-section">
+    <h2 class="section-title" style="text-align:center;">📍 Info del Evento</h2>
+    <p class="section-subtitle" style="text-align:center;">Todo lo que necesitas saber para la fiesta</p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="info-icon">📅</span>
+        <h3>Fecha</h3>
+        <p>Sábado, 3 de Octubre de 2026</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">📍</span>
+        <h3>Lugar</h3>
+        <p>Av. Circunvalación N°200<br/>De la Pollería Romancero, 1 cuadra arriba</p>
+      </div>
+      <div class="info-card">
+        <span class="info-icon">🎸</span>
+        <h3>Temática</h3>
+        <p>¡Rock & Roll! Ven con tu mejor estilo rockero 🤘</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FORMS SECTION — Felicitaciones
+       ═══════════════════════════════════════════════ -->
+  <section class="forms-section" id="forms-section">
+    <h2 class="section-title" style="text-align:center;">💌 Deja tu Felicitación</h2>
+    <p class="section-subtitle" style="text-align:center;">Envíale un mensaje, foto o video a Alison</p>
+
+    <!-- Form Tabs -->
+    <div class="form-tabs">
+      <button class="form-tab active" data-form="message" id="tab-message">💌 Mensaje</button>
+      <button class="form-tab" data-form="photo" id="tab-photo">📷 Foto</button>
+      <button class="form-tab" data-form="video" id="tab-video">🎥 Video</button>
+    </div>
+
+    <!-- Message Form -->
+    <div class="form-panel active" id="form-message">
+      <div class="form-card">
+        <form id="message-form">
+          <div class="form-group">
+            <label class="form-label" for="msg-name">Tu nombre</label>
+            <input type="text" id="msg-name" class="form-input" placeholder="¿Cómo te llamas?" maxlength="80" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="msg-text">Tu mensaje para Alison</label>
+            <textarea id="msg-text" class="form-textarea" placeholder="Escribe tu felicitación rockera... 🎸" maxlength="800" required></textarea>
+          </div>
+          <button type="submit" class="submit-button" id="submit-message">🤘 Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Photo Form -->
+    <div class="form-panel" id="form-photo">
+      <div class="form-card">
+        <form id="photo-form">
+          <div class="form-group">
+            <label class="form-label" for="photo-name">Tu nombre</label>
+            <input type="text" id="photo-name" class="form-input" placeholder="¿Cómo te llamas?" maxlength="80" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selecciona una foto</label>
+            <div class="file-input-wrapper">
+              <label class="file-input-label">
+                <span class="file-icon">📷</span>
+                <span>Haz clic o arrastra una imagen aquí</span>
+                <input type="file" id="photo-file" class="file-input-hidden" accept="image/*" required />
+              </label>
+            </div>
+            <div class="media-preview" id="photo-preview"></div>
+            <div class="progress-bar" id="photo-progress">
+              <div class="progress-fill" id="photo-progress-fill"></div>
+            </div>
+          </div>
+          <button type="submit" class="submit-button" id="submit-photo">📷 Subir Foto</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Video Form -->
+    <div class="form-panel" id="form-video">
+      <div class="form-card">
+        <form id="video-form">
+          <div class="form-group">
+            <label class="form-label" for="video-name">Tu nombre</label>
+            <input type="text" id="video-name" class="form-input" placeholder="¿Cómo te llamas?" maxlength="80" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Selecciona un video</label>
+            <div class="file-input-wrapper">
+              <label class="file-input-label">
+                <span class="file-icon">🎥</span>
+                <span>Haz clic o arrastra un video aquí</span>
+                <input type="file" id="video-file" class="file-input-hidden" accept="video/*" required />
+              </label>
+            </div>
+            <div class="media-preview" id="video-preview"></div>
+            <div class="progress-bar" id="video-progress">
+              <div class="progress-fill" id="video-progress-fill"></div>
+            </div>
+          </div>
+          <button type="submit" class="submit-button" id="submit-video">🎥 Subir Video</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       WALL SECTION — Muro de Felicitaciones
+       ═══════════════════════════════════════════════ -->
+  <section class="wall-section" id="wall-section">
+    <h2 class="section-title" style="text-align:center;">🎸 Muro de la Fiesta</h2>
+    <p class="section-subtitle" style="text-align:center;">Todas las felicitaciones para Alison</p>
+
+    <!-- Wall Tabs -->
+    <div class="wall-tabs">
+      <button class="wall-tab active" data-wall="messages" id="wall-tab-messages">💌 Mensajes</button>
+      <button class="wall-tab" data-wall="photos" id="wall-tab-photos">📷 Fotos</button>
+      <button class="wall-tab" data-wall="videos" id="wall-tab-videos">🎥 Videos</button>
+    </div>
+
+    <!-- Wall Grids -->
+    <div class="wall-grid active" id="grid-messages"></div>
+    <div class="wall-grid" id="grid-photos"></div>
+    <div class="wall-grid" id="grid-videos"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       LIGHTBOX
+       ═══════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">✕</button>
+    <img src="" alt="Vista ampliada" id="lightbox-img" />
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <p class="footer-text">
+      Hecho con <span class="heart">❤️</span> para Alison
+    </p>
+    <p class="footer-rock">🤘 Rock On! 🤘</p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       MUSIC TOGGLE BUTTON (Fixed)
+       ═══════════════════════════════════════════════ -->
+  <button class="music-toggle" id="music-toggle" aria-label="Toggle música">
+    <span id="music-icon">🔇</span>
+  </button>
+
+  <!-- Main JS Module -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
