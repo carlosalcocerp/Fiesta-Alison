@@ -1307,6 +1307,142 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════════════
+   GIFT SECTION — Deja tu Regalito
+   ═══════════════════════════════════════════════════════════ */
+.gift-section {
+  padding: 4rem 1.5rem 5rem;
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, rgba(116, 35, 140, 0.15), transparent 70%),
+              radial-gradient(circle at 80% 80%, rgba(196, 30, 58, 0.1), transparent 60%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gift-container {
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gift-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(116, 35, 140, 0.25);
+  border: 1px solid rgba(179, 77, 212, 0.4);
+  color: #e2b4f5;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(116, 35, 140, 0.2);
+}
+
+.gift-card {
+  margin-top: 2rem;
+  background: linear-gradient(145deg, rgba(26, 26, 38, 0.95), rgba(15, 15, 22, 0.98));
+  border: 2px solid rgba(179, 77, 212, 0.35);
+  border-radius: 20px;
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(116, 35, 140, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.gift-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #74238c, var(--accent-red), #00c9a7, #74238c);
+}
+
+.gift-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6),
+              0 0 35px rgba(116, 35, 140, 0.35);
+  border-color: rgba(179, 77, 212, 0.6);
+}
+
+.gift-qr-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.gift-qr-image {
+  width: 230px;
+  height: 230px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  border: 3px solid #74238c;
+}
+
+.gift-qr-wrapper:hover .gift-qr-image {
+  transform: scale(1.04);
+  box-shadow: 0 12px 30px rgba(116, 35, 140, 0.4);
+}
+
+.gift-qr-hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition-fast);
+}
+
+.gift-qr-wrapper:hover .gift-qr-hint {
+  color: #e2b4f5;
+}
+
+.gift-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.gift-yape-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #74238c;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(116, 35, 140, 0.4);
+  letter-spacing: 1px;
+}
+
+.gift-card-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  max-width: 420px;
+  text-align: center;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
    FOOTER — Grunge Dark
    ═══════════════════════════════════════════════════════════ */
 .footer {

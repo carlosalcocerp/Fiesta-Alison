@@ -96,6 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === lightbox) closeLightbox();
   });
 
+  // Gift QR Lightbox
+  const giftQrImg = document.getElementById('gift-qr-img');
+  if (giftQrImg) {
+    giftQrImg.addEventListener('click', () => {
+      openLightbox('/qr-regalo.png');
+    });
+  }
+
   // ─── Form Tab Switching ───
   const formTabs = document.querySelectorAll('.form-tab');
   const formPanels = document.querySelectorAll('.form-panel');
